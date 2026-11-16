@@ -11,6 +11,9 @@ const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
   key_secret: process.env.RAZORPAY_KEY_SECRET, // keep in environment variables
 });
+app.get("/api/health", (req, res) => {
+  res.json({ ok: true });
+});
 
 app.post("/api/create-order", async (req, res) => {
   const order = await razorpay.orders.create({
